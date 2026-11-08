@@ -1,0 +1,100 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Bounded';
+  src: url('/fonts/Bounded-Variable.woff2') format('woff2-variations'),
+       url('/fonts/Bounded-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  background-color: #0E0F12;
+  color: #FFFFFF;
+  font-family: 'Bounded', sans-serif;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+/* 1. Анимация Play: падение вниз и появление сверху */
+@keyframes playDropAnim {
+  0% { transform: translateY(0); opacity: 1; }
+  30% { transform: translateY(14px); opacity: 0; }
+  31% { transform: translateY(-16px); opacity: 0; }
+  70% { transform: translateY(2px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* 2. Анимация Home: СТРОГО СИММЕТРИЧНОЕ покачивание влево и вправо */
+@keyframes homeWobbleAnim {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-12deg); }
+  50% { transform: rotate(12deg); }
+  75% { transform: rotate(-6deg); }
+  88% { transform: rotate(6deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* 3. Анимация Настроек: оборот на 360 градусов */
+@keyframes settingsSpinAnim {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.anim-play {
+  animation: playDropAnim 0.45s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+.anim-home {
+  animation: homeWobbleAnim 0.35s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.anim-settings {
+  animation: settingsSpinAnim 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) forwards;
+}
+
+
+/* Большая звездочка (справа-сверху, по часовой) */
+@keyframes gearBigRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Маленькая звездочка (слева-снизу, ПРОТИВ часовой, зуб входит в выемку) */
+@keyframes gearSmallRotate {
+  0% { transform: rotate(45deg); }
+  100% { transform: rotate(-315deg); }
+}
+
+.anim-gear-big {
+  animation: gearBigRotate 3.2s linear infinite;
+  transform-origin: center center;
+}
+
+.anim-gear-small {
+  animation: gearSmallRotate 3.2s linear infinite;
+  transform-origin: center center;
+}
+
+/* Ритмичный переворот песочных часов */
+@keyframes hourglassFlip {
+  0%, 35% {
+    transform: rotate(0deg);
+  }
+  48%, 85% {
+    transform: rotate(180deg);
+  }
+  98%, 100% {
+    transform: rotate(360deg);
+  }
+}
+
+.anim-hourglass {
+  animation: hourglassFlip 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transform-origin: center center;
+}
