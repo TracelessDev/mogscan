@@ -104,7 +104,7 @@ export default function App() {
       const startParam = tg.initDataUnsafe?.start_param;
       if (startParam && startParam.startsWith('battle_')) {
         const battleId = startParam.replace('battle_', '');
-        fetch(`https://pretty-dragons-sin.loca.lt/api/battle/${battleId}`)
+        fetch(`https://nqxod-217-28-137-14.run.pinggy-free.link/battle/${battleId}`)
           .then(res => res.json())
           .then(data => {
             if (data && data.id) {
@@ -140,7 +140,7 @@ export default function App() {
 
     const interval = setInterval(async () => {
       try {
-        const res = await fetch(`https://pretty-dragons-sin.loca.lt/api/battle/${activeBattle.id}`);
+        const res = await fetch(`https://nqxod-217-28-137-14.run.pinggy-free.link/battle/${activeBattle.id}`);
         if (!res.ok) return;
         const updated = await res.json();
         
@@ -273,7 +273,7 @@ export default function App() {
       setIsScanning(true);
       try {
         if (activeBattle && activeBattle.status === 'waiting') {
-          const res = await fetch(`https://pretty-dragons-sin.loca.lt/api/battle/${activeBattle.id}/join`, {
+          const res = await fetch(`https://nqxod-217-28-137-14.run.pinggy-free.link/battle/${activeBattle.id}/join`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -287,7 +287,7 @@ export default function App() {
           setActiveBattle(finishedBattle);
           setIsBattleResultOpen(true);
         } else {
-          const res = await fetch('https://pretty-dragons-sin.loca.lt/api/battle/create', {
+          const res = await fetch('https://nqxod-217-28-137-14.run.pinggy-free.link/battle/create', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -316,7 +316,7 @@ export default function App() {
     setScanResult(null);
 
     try {
-      const res = await fetch('https://pretty-dragons-sin.loca.lt/api/scan', {
+      const res = await fetch('https://nqxod-217-28-137-14.run.pinggy-free.link/scan', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ image: photo }),
